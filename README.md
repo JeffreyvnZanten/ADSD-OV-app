@@ -1,3 +1,6 @@
+# mac users 
+Gebruikt dit om de webpack aan de praat te krijgen chmod +x node_modules/.bin/webpack
+
 # Stap 1: Git clone
 Kopieer de repository naar je computer via de zip of gebruik Git clone met Git bash of Sourcetree o.i.d.
 
