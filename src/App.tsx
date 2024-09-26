@@ -1,7 +1,7 @@
 import React from 'react';
 
 function App() {
-  return <h1>Goodbye, World! and heaven</h1>;
+  return <h1>Goodbye, World! xd lab hamid test</h1>;
 }
 
 /* Andere syntax
