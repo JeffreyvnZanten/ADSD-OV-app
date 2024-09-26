@@ -1,15 +1,13 @@
 import React from 'react';
+import HelloWorld from "./HelloWorld";
 
 function App() {
-  return <h1>Goodbye, World! and heaven</h1>;
+  return (
+    <>
+     <HelloWorld />
+     <HelloWorld />
+    </>
+  );
 }
-
-/* Andere syntax
-
-const App = () => {
-  return <h1>Hello, World!</h1>;
-};
-
-*/
 
 export default App;
