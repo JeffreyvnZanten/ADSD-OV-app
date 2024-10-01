@@ -1,0 +1,39 @@
+/* App.css */
+
+/* Light Mode */
+.light-mode {
+  background-color: white;
+  color: black;
+  height: 100vh; /* Full screen height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative; /* Allows absolute positioning of children */
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: black;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative; /* Allows absolute positioning of children */
+}
+
+.top-right {
+  position: absolute;
+  top: 10px; /* Distance from the top */
+  right: 10px; /* Distance from the right */
+  font-size: 12px; /* Smaller text size */
+}
+
+.button {
+  font-size: 12px; /* Smaller button text */
+  padding: 5px 10px; /* Smaller padding */
+  margin-left: 5px; /* Spacing between text and button */
+  background-color: lightcoral;
+}

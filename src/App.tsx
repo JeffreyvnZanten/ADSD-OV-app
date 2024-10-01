@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './App.css'; // We will add CSS styles for light and dark mode
 
-function App() {
-  return <h1>Goodbye, World! xd lab hamid test</h1>;
-}
+const App: React.FC = () => {
+  const [darkMode, setDarkMode] = useState(false); // State to toggle dark mode
 
-/* Andere syntax
+  // Function to toggle dark mode
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
 
-const App = () => {
-  return <h1>Hello, World!</h1>;
+  return (
+    <div className={darkMode ? 'dark-mode' : 'light-mode'}>
+      <div className="top-right">
+        <span>{darkMode ? 'Dark Mode' : 'Light Mode'}</span>
+        <button className="button" onClick={toggleDarkMode}>
+          {darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+        </button>
+      </div>
+    </div>
+  );
 };
-
-*/
 
 export default App;
