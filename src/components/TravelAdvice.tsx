@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function UitkomstReisAdvies() {
+function TravelAdvice() {
     return (
         <p>Lorem Ipsum is simply dummy text of the printing 
             and typesetting industry. Lorem Ipsum has been the 
@@ -16,4 +16,4 @@ function UitkomstReisAdvies() {
     )
 }
 
-export default UitkomstReisAdvies;
+export default TravelAdvice;

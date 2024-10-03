@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-function LocatieVan() {
+function DestinationSelection() {
     const [name, setName] = useState<string>('lorem ipsum');
     return (
         <div>
@@ -10,4 +10,4 @@ function LocatieVan() {
     );
 }
 
-export default LocatieVan;
+export default DestinationSelection;

@@ -1,17 +1,17 @@
 import React from 'react';
 
-import LocatieVan from './components/LocatieVan';
-import LocatieNaar from './components/LocatieNaar';
-import VervoersmiddelenKeuzeSelectie from "./components/VervoersmiddelenKeuzeSelectie";
-import UitkomstReisAdvies from './components/UitkomstReisAdvies';
+import DestinationSelection from './components/DepartureSelection';
+import DepartureSelection from './components/DestinationSelection';
+import TravelAdvice from './components/TravelAdvice';
+import TransitModeSelection from './components/TransitModeSelection';
 
 function App() {
   return (
     <div id="container">
-      <LocatieVan />
-      <LocatieNaar />
-      <VervoersmiddelenKeuzeSelectie />
-      <UitkomstReisAdvies />
+      <DepartureSelection />
+      <DestinationSelection />
+      <TransitModeSelection />
+      <TravelAdvice />
     </ div>
   );
 }

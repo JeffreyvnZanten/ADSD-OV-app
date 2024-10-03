@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function VervoersmiddelenKeuzeSelectie() {
+function TransitModeSelection() {
     return (
         <div>
             <div>icon</div>
@@ -12,4 +12,4 @@ function VervoersmiddelenKeuzeSelectie() {
     );
 }
 
-export default VervoersmiddelenKeuzeSelectie;
+export default TransitModeSelection;

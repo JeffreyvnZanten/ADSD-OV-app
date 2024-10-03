@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-function LocatieNaar() {
+function DepartureSelection() {
     const [name, setName] = useState<string>('lorem ipsum');
     return (
         <div>
@@ -10,4 +10,4 @@ function LocatieNaar() {
     );
 }
 
-export default LocatieNaar;
+export default DepartureSelection;
