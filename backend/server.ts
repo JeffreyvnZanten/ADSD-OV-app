@@ -5,13 +5,24 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-interface Station {
+export interface Station {
     id: number;
     name: string;
     code: string;
     city: string;
     platform: string;
     exit: string;
+}
+
+export interface RouteRequest {
+    departureStation: string;
+    arrivalStation: string;
+}
+
+export interface Route {
+    departure: string;
+    arrival: string;
+    steps: string[];
 }
 
 const stations: Station[] = [
@@ -31,16 +42,7 @@ app.get('/stations', (req: Request, res: Response) => {
     res.json(stations);
 });
 
-interface RouteRequest {
-    departureStation: string;
-    arrivalStation: string;
-}
 
-interface Route {
-    departure: string;
-    arrival: string;
-    steps: string[];
-}
 
 app.post('/route', (req: Request<{}, {}, RouteRequest>, res: Response) => {
     const { departureStation, arrivalStation } = req.body;

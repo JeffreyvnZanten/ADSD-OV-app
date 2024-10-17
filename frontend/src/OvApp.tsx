@@ -1,5 +1,5 @@
 import React from 'react';
-import useOvApp from './hooks/useOvApp'; // Import the custom hook
+import useOvApp from './hooks/useOvApp'; 
 
 function OVApp() {
     const {
@@ -11,7 +11,7 @@ function OVApp() {
         handleArrivalChange,
         handleGetRoute,
         handleReset
-    } = useOvApp(); // Use the custom hook
+    } = useOvApp(); 
 
     return(
         <div>
