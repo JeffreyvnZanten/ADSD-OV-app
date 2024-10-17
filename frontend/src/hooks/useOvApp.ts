@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react';
 
 interface Station {
-    id: string | number;  // Adjust this type based on your actual data
+    id: number;
     name: string;
-  }
+    code: string;
+    city: string;
+    platform: string;
+    exit: string;
+}
 
 interface Route {
     departure: string;
     arrival: string;
     steps: string[];
-  }
+}
 
 function useOvApp() {
     const [stations, setStations] = useState<Station[]>([]);
@@ -20,20 +24,20 @@ function useOvApp() {
     useEffect(() => {
         fetch('http://localhost:4010/stations')
             .then((response) => response.json())
-            .then((data) => setStations(data))
-            .catch((error) => console.error('Error fetching data:', error));
+            .then((data: Station[]) => setStations(data))
+            .catch((error) => console.error('Error fetching stations:', error));
     }, []);
 
-    const handleDepartureChange = (event: any) => {
-        const selectedStation = event.target.value; 
-        setDepartureStation(selectedStation); 
-        speak(`Vertrekstation is ingesteld op ${selectedStation}`); 
+    const handleDepartureChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedStation = event.target.value;
+        setDepartureStation(selectedStation);
+        speak(`Vertrekstation is ingesteld op ${selectedStation}`);
     };
 
-    const handleArrivalChange = (event: any) => {
+    const handleArrivalChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedStation = event.target.value;
-        setArrivalStation(selectedStation); 
-        speak(`Aankomststation is ingesteld op ${selectedStation}`); 
+        setArrivalStation(selectedStation);
+        speak(`Aankomststation is ingesteld op ${selectedStation}`);
     };
 
     const handleGetRoute = () => {
@@ -49,7 +53,7 @@ function useOvApp() {
                 })
             })
                 .then((response) => response.json())
-                .then((data) => {
+                .then((data: Route) => {
                     setRoute(data);
                     speak(`De route van ${data.departure} naar ${data.arrival} is gegenereerd. ${data.steps.join(', ')}`);
                 })
@@ -58,9 +62,10 @@ function useOvApp() {
     };
 
     const handleReset = () => {
-        setDepartureStation(''); 
-        setArrivalStation('');   
-        setRoute(null);          
+        setDepartureStation('');
+        setArrivalStation('');
+        setRoute(null);
+        speak('De selectie is gereset');
     };
 
     const speak = (text: string) => {
@@ -69,7 +74,6 @@ function useOvApp() {
         window.speechSynthesis.speak(utterance);
     };
 
-    // Return the values and functions
     return {
         stations,
         departureStation,

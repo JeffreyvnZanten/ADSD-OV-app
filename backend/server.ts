@@ -1,13 +1,20 @@
+import express, { Request, Response } from 'express';
+import cors from 'cors';
 
-const express = require('express');
-const cors = require('cors');
 const app = express();
-
 app.use(cors());
 app.use(express.json());
 
+interface Station {
+    id: number;
+    name: string;
+    code: string;
+    city: string;
+    platform: string;
+    exit: string;
+}
 
-const stations = [
+const stations: Station[] = [
     { id: 1, name: 'Station Amsterdam Centraal', code: 'AMS', city: 'Amsterdam', platform: 'Perron 5', exit: 'Hoofduitgang' },
     { id: 2, name: 'Station Rotterdam Centraal', code: 'RTD', city: 'Rotterdam', platform: 'Perron 3', exit: 'Noorduitgang' },
     { id: 3, name: 'Station Utrecht Centraal', code: 'UTC', city: 'Utrecht', platform: 'Perron 12', exit: 'Zuiduitgang' },
@@ -16,19 +23,27 @@ const stations = [
     { id: 6, name: 'Station Arnhem Centraal', code: 'ARN', city: 'Arnhem', platform: 'Perron 1', exit: 'Hoofduitgang' }
 ];
 
-
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
     res.send('Welkom bij de OV API! Ga naar /stations voor stationsinformatie.');
 });
 
-
-app.get('/stations', (req, res) => {
+app.get('/stations', (req: Request, res: Response) => {
     res.json(stations);
 });
 
-app.post('/route', (req, res) => {
-    const { departureStation, arrivalStation } = req.body;
+interface RouteRequest {
+    departureStation: string;
+    arrivalStation: string;
+}
 
+interface Route {
+    departure: string;
+    arrival: string;
+    steps: string[];
+}
+
+app.post('/route', (req: Request<{}, {}, RouteRequest>, res: Response) => {
+    const { departureStation, arrivalStation } = req.body;
     const departure = stations.find(station => station.name === departureStation);
     const arrival = stations.find(station => station.name === arrivalStation);
 
@@ -40,7 +55,7 @@ app.post('/route', (req, res) => {
         return res.status(400).json({ error: 'Vertrek- en aankomststation moeten verschillend zijn.' });
     }
 
-    const route = {
+    const route: Route = {
         departure: departure.name,
         arrival: arrival.name,
         steps: [
@@ -53,8 +68,7 @@ app.post('/route', (req, res) => {
     res.json(route);
 });
 
-
-const PORT = 4010;
+const PORT: number = 4010;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
