@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+import HelloWorld from './HelloWorld';
 
 // Met error handling
 const container = document.getElementById('root');
@@ -13,6 +14,6 @@ const root = createRoot(document.getElementById('root') as HTMLElement); hoi
 
 root.render(
   <React.StrictMode>
-    <App />
+    <HelloWorld />
   </React.StrictMode>
 );
