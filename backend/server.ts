@@ -5,6 +5,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Blueprint voor de data van de station entiteit
+// export zodat het gebruikt kan worden in andere bestanden
 export interface Station {
     id: number;
     name: string;
@@ -14,11 +16,15 @@ export interface Station {
     exit: string;
 }
 
+// Blueprint voor de data van de routeverzoek entiteit
+// export zodat het gebruikt kan worden in andere bestanden
 export interface RouteRequest {
     departureStation: string;
     arrivalStation: string;
 }
 
+// Blueprint voor de data van de route entiteit
+// export zodat het gebruikt kan worden in andere bestanden
 export interface Route {
     departure: string;
     arrival: string;
@@ -41,8 +47,6 @@ app.get('/', (req: Request, res: Response) => {
 app.get('/stations', (req: Request, res: Response) => {
     res.json(stations);
 });
-
-
 
 app.post('/route', (req: Request<{}, {}, RouteRequest>, res: Response) => {
     const { departureStation, arrivalStation } = req.body;
